@@ -6,11 +6,12 @@ webui-vue is a web-based user interface for the OpenBMC firmware stack built on
 ## How to make PRs to this repo for Fortanix specific changes?
 - Checkout and pull  the latest ```series3-openbmc``` branch (all the PRs should be merged to this branch)
 - Create a dev branch from ```series3-openbmc```
-- Once you are done making changes, you should test the changes (at least the build). The way to do this is to take the commit
+- Once you are done making changes, you should test the changes (at least the build). The way to do this is to push the changes to remote and then take the commit
   hash and the name of the dev branch and update it in ```asrock-openbmc/meta-phosphor/recipes-phosphor/webui/webui-vue_git.bb``` file.
   The fields are ```SRC_URI``` (change the ```branch``` field to dev branch name) and ```SRCREV``` to the dev branch commit. 
-  (repo link - https://bitbucket.org/fortanix/asrock-openbmc/src/main/)
-- Once the build suceeds, raise a PR to ```series3-openbmc``` branch.
+  (repo link - https://bitbucket.org/fortanix/asrock-openbmc/src/main/). Once you have updated the dev branch name and commit hash, you can build openbmc by
+  following the instructions https://bitbucket.org/fortanix/asrock-openbmc/src/main/README.md . 
+- Once the build suceeds, raise a PR to ```series3-openbmc``` branch and wait for CI to pass. 
 - Once the PR is merged, please raise a PR to update the ```SRCREV``` in ```asrock-openbmc/meta-phosphor/recipes-phosphor/webui/webui-vue_git.bb``` with the
   latest commit hash of ```series3-openbmc``` branch of this repo (```webui-vue```). Please  make sure that the ```branch``` field in ```SRC_URI```
   is kept to ```series3-openbmc```.
